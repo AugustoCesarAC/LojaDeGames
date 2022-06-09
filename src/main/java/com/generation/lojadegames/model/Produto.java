@@ -11,8 +11,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
@@ -38,6 +40,8 @@ public class Produto
 	private String descricao; 
 	
 	@NotNull
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	@Positive(message = "Precisa ser positivo")
 	@Digits(integer = 4, fraction = 2, message = "Apenas duas casas decimais e até 9999 mil")
 	private BigDecimal preco; 
 	
